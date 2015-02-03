@@ -1,0 +1,16 @@
+{
+    "name": "solidew/casus",
+    "description": "A comprehensive and reliable randomizer library for php",
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Omran Jamal",
+            "email": "o.jamal97@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
