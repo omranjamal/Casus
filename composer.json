@@ -12,9 +12,6 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "src/Casus.php"
-        ],
         "psr-4": {
             "solidew\\Casus\\": "src"
         }
