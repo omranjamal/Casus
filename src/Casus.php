@@ -44,6 +44,8 @@ class Casus
 					throw new error\Insecure('The provided generator is not a CSPRNG');
 				}
 			}
+		} elseif ($secure === false) {
+			$this->generator = new generators\Basic;
 		}
 	}
 }
