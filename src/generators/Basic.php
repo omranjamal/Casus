@@ -1,5 +1,5 @@
 <?php
-namespace \solidew\Casus\generators;
+namespace solidew\Casus\generators;
 
 class Basic extends \solidew\Casus\Generator 
 {
@@ -17,7 +17,7 @@ class Basic extends \solidew\Casus\Generator
 			$signed = (int) $signed;
 
 			while ($i < ($bits-$signed)) {
-				$this->max = ($this->max|1)
+				$this->max = ($this->max|1)<<1;
 			}
 		} else {
 			$this->max = PHP_INT_MAX;

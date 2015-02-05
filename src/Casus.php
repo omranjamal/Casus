@@ -41,7 +41,7 @@ class Casus
 
 			if ($secure === true) {
 				if ($generator->isSecure() === false) {
-					throw new error\Insecure('The provided generator is not a CSPRNG');
+					throw new errors\Insecure('The provided generator is not a CSPRNG');
 				}
 			}
 		} else {

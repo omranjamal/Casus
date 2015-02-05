@@ -1,5 +1,5 @@
 <?php
-namespace \solidew\Casus;
+namespace solidew\Casus;
 
 abstract class Generator
 {
