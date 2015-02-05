@@ -21,7 +21,7 @@ class Casus
 		return $this->secure;
 	}
 
-	public function getDenerator()
+	public function getGenerator()
 	{
 		return $this->generator;
 	}
@@ -36,14 +36,16 @@ class Casus
 			} else {
 				throw new errors\Insecure('MCrypt or OpenSSL extension not found');
 			}
-		} elseif ($generator) {
+		} elseif ($generator !== null) {
 			$this->generator = $generator;
 
 			if ($secure === true) {
-				if ($generator->secure === false) {
+				if ($generator->isSecure() === false) {
 					throw new error\Insecure('The provided generator is not a CSPRNG');
 				}
 			}
+		} else {
+			$this->generator = new generators\Basic;
 		}
 	}
 }
