@@ -26,7 +26,7 @@ class Casus
 		return $this->generator;
 	}
 
-	public function __construct($secure = true, Generator $generator = null)
+	public function setGenerator($secure = true, Generator $generator = null)
 	{
 		if ($secure === true && $generator === null) {
 			if ($this->hasMCrypt()) {
@@ -47,5 +47,10 @@ class Casus
 		} else {
 			$this->generator = new generators\Basic;
 		}
+	}
+
+	public function __construct($secure = true, Generator $generator = null)
+	{
+		$this->setGenerator($secure, $generator);
 	}
 }

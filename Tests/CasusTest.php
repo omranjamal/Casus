@@ -38,6 +38,7 @@ namespace {
 		public function testHasMCrypt()
 		{
 			$casus = new \solidew\Casus\Casus();
+			$casus->setGenerator();
 			$this->assertEquals(
 				function_exists("mcrypt_encrypt"),
 				$casus->hasMcrypt()
@@ -47,6 +48,7 @@ namespace {
 		public function testHasOpenSSL()
 		{
 			$casus = new \solidew\Casus\Casus();
+			$casus->setGenerator();
 			$this->assertEquals(
 				function_exists("openssl_random_pseudo_bytes"), 
 				$casus->hasOpenSSL()
@@ -57,7 +59,8 @@ namespace {
 		{
 			//With Default Values
 			$casus = new \solidew\Casus\Casus();
-
+			$casus->setGenerator();
+			
 			if ($casus->hasMCrypt()) {
 				$this->assertInstanceOf(
 					'\\solidew\\Casus\\generators\\MCrypt',
@@ -74,8 +77,9 @@ namespace {
 		public function testExplicitValueSettings()
 		{
 			//With one value explicitly set
-			$casus = new \solidew\Casus\Casus(true);
-
+			$casus = new \solidew\Casus\Casus();
+			$casus->setGenerator(true);
+			
 			if ($casus->hasMCrypt()) {
 				$this->assertInstanceOf(
 					'\\solidew\\Casus\\generators\\MCrypt',
