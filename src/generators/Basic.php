@@ -6,10 +6,16 @@ class Basic extends \solidew\Casus\Generator
 	protected $max = 0;
 	protected $min = 0;
 
-	public function __construct($bytes = PHP_INT_SIZE, $signed = false)
+	public function getMax(){
+		return $this->max;
+	}
+
+	public function __construct($bytes = PHP_INT_SIZE, $signed = true)
 	{
 		if ($bytes > PHP_INT_SIZE) {
-			throw new Exception('Your Version of PHP dosen\'t support that many bytes');
+			throw new \solidew\Casus\errors\ByteOverflow(
+				'Your Version of PHP dosen\'t support that many bytes'
+			);
 		} elseif ($bytes !== PHP_INT_SIZE) {
 			$bits = $bytes*8;
 			$i = 0;
@@ -17,7 +23,8 @@ class Basic extends \solidew\Casus\Generator
 			$signed = (int) $signed;
 
 			while ($i < ($bits-$signed)) {
-				$this->max = ($this->max|1)<<1;
+				$this->max = ($this->max<<1)|1;
+				$i++;
 			}
 		} else {
 			$this->max = PHP_INT_MAX;
