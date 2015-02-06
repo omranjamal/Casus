@@ -5,6 +5,7 @@ abstract class Generator
 {
     protected $secure = false;
     protected $max = 0;
+    protected $default_charset = 'abcdefghijklmopqrstuvwkyz';
 
     public function isSecure()
     {
@@ -82,6 +83,29 @@ abstract class Generator
             $max = isset($ranges[$rand][1])?$ranges[$rand][1]:255;
 
             $str.= chr($this->generate($min, $max, $secure));
+        }
+
+        return $str;
+    }
+
+    public function string($length = 32, $charset = false, $secure = true)
+    {
+        if ($charset === false) {
+            $charset = $this->default_charset;
+        }
+
+        if (is_string($charset)) {
+            $charset_count = strlen($charset);
+        } elseif (is_array($charset)) {
+            $charset_count = count($charset);
+        }
+
+        $rand = 0;
+        $str = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $rand = $this->generate(0, $charset_count-1, $secure);
+            $str.= $charset[$rand];
         }
 
         return $str;

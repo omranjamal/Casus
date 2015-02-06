@@ -78,6 +78,11 @@ class Casus
         return $this->generator->asciiRange($length, $ranges, $secure);
     }
 
+    public function string($length = 32, $charset = false, $secure = true)
+    {
+        return $this->generator->string($length, $charset, $secure);
+    }
+
     public function integerArray($min = 0, $max = PHP_INT_MAX, $length = 10, $secure = true)
     {
         return $this->generator->integerArray($min, $max, $length, $secure);
