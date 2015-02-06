@@ -61,7 +61,7 @@ abstract class Generator
     public function asciiRange($length = 32, $ranges = [[65,90],[97,122],[48,57]], $secure = true)
     {
         if (is_array($ranges)) {
-            if (!is_array($ranges[0])) {
+            if (isset($ranges[0]) && !is_array($ranges[0])) {
                 $ranges = [$ranges];
             }
         } else {
@@ -79,8 +79,8 @@ abstract class Generator
         for ($i = 0; $i < $length; $i++) {
             $rand = $this->generate(0, $ranges_count-1, $secure);
 
-            $min = isset($ranges[$rand][0])?$ranges[$rand][0]:0;
-            $max = isset($ranges[$rand][1])?$ranges[$rand][1]:255;
+            $min = isset($ranges[$rand][0]) ? (int) $ranges[$rand][0] : 0;
+            $max = isset($ranges[$rand][1]) ? (int) $ranges[$rand][1] : 255;
 
             $str.= chr($this->generate($min, $max, $secure));
         }
