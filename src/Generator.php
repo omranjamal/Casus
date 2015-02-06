@@ -132,7 +132,7 @@ abstract class Generator
         return $input;
     }
 
-    public function selectRandom($input, $length, $secure = true)
+    public function selectRandom($input, $length = 1, $secure = true)
     {
         if (is_string($input)) {
             $count = strlen($input);
