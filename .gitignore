@@ -1,3 +1,4 @@
 /vendor/
 .fuse_*
 *~
+test.php

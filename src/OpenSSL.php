@@ -1,11 +1,11 @@
 <?php
-namespace solidew\Casus\generators;
+namespace solidew\Casus;
 
 class OpenSSL extends \solidew\Casus\Generator 
 {
 	public $secure = true;
 	
-	public function generate()
+	public function integer($mix, $max)
 	{
 		
 	}
