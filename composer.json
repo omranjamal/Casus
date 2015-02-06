@@ -1,6 +1,6 @@
 {
     "name": "solidew/casus",
-    "description": "A comprehensive & reliable randomizer library for PHP",
+    "description": "Just another Randomizer Library but cooler!",
     "require-dev": {
         "phpunit/phpunit": "~4.4"
     },
