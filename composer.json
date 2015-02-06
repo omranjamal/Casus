@@ -1,6 +1,10 @@
 {
     "name": "solidew/casus",
     "description": "Just another Randomizer Library but cooler!",
+    "require": {
+         "php": ">=5.4.0",
+         "ext-mcrypt": "*"
+    },
     "require-dev": {
         "phpunit/phpunit": "~4.4"
     },
@@ -16,6 +20,5 @@
             "solidew\\Casus\\": "src"
         }
     },
-    "minimum-stability": "beta",
-    "require": {}
+    "minimum-stability": "beta"
 }
