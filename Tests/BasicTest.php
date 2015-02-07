@@ -143,5 +143,23 @@ namespace {
             $this->assertRegExp('/^b+$/', $val);
             $this->assertInternalType('string', $val);
         }
+
+        public function testIntegerArray()
+        {
+            $casus = new \solidew\Casus\Basic;
+            $val = $casus->integerArray(1,2,100);
+            $this->assertInternalType('array', $val);
+            $this->assertEquals(count($val), 100);
+            $this->assertContainsOnly('int', $val);
+        }
+
+        public function testFloatArray()
+        {
+            $casus = new \solidew\Casus\Basic;
+            $val = $casus->floatArray(1,2,4,100);
+            $this->assertInternalType('array', $val);
+            $this->assertEquals(count($val), 100);
+            $this->assertContainsOnly('float', $val);
+        }
     }
 }
