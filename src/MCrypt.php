@@ -3,7 +3,7 @@ namespace solidew\Casus;
 
 class MCrypt extends Generator 
 {
-    public $secure = true;
+    protected $secure = true;
 	
 	public function integer($min = 0, $max = PHP_INT_MAX)
 	{
