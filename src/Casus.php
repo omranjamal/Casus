@@ -46,6 +46,8 @@ class Casus
         } else {
             $this->generator = new Basic;
         }
+
+        return true;
     }
 
     public function integer($min = 0, $max = PHP_INT_MAX)
@@ -116,5 +118,15 @@ class Casus
     public function __construct($secure = true, Generator $generator = null)
     {
         $this->setGenerator($secure, $generator);
+    }
+
+    public function __invoke($min = 0, $max = PHP_INT_MAX, $secure = true)
+    {
+        return $this->generator->integer($min, $max);
+    }
+
+    public function __call($name, $arguments)
+    {
+        return call_user_func_array([$this->generator, $name], $arguments);
     }
 }
