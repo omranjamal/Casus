@@ -1,7 +1,7 @@
 <?php
 namespace solidew\Casus;
 
-class Basic extends \solidew\Casus\Generator 
+class Basic extends Generator 
 {
 	public function integer($min = 0, $max = PHP_INT_MAX)
     {
