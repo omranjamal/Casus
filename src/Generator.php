@@ -20,10 +20,10 @@ abstract class Generator
         }
     }
 
-    public function float($min = 0, $max = 1, $points = 4, $secure = true)
+    public function float($min = 0, $max = 1, $precision = 4, $secure = true)
     {
-        $e = pow(10, $points);
-        return ($this->generate($min*$e, $max*$e, $secure)/$e);
+        $e = pow(10, $precision);
+        return round($this->generate($min*$e, $max*$e, $secure)/$e, $precision);
     }
 
     public function boolean($secure = true)
@@ -83,6 +83,7 @@ abstract class Generator
             $max = isset($ranges[$rand][1]) ? (int) $ranges[$rand][1] : 255;
 
             $str.= chr($this->generate($min, $max, $secure));
+            // echo $this->generate($min, $max, $secure).'-';
         }
 
         return $str;
@@ -122,12 +123,12 @@ abstract class Generator
         return $array;
     }
 
-    public function floatArray($min = 0, $max = 1, $points = 4, $length = 10, $secure = true)
+    public function floatArray($min = 0, $max = 1, $precision = 4, $length = 10, $secure = true)
     {
         $array = [];
 
         for($i = 0; $i < $length; $i++){
-            $array[] = $this->float($min, $max, $points, $secure);
+            $array[] = $this->float($min, $max, $precision, $secure);
         }
 
         return $array;
