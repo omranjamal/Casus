@@ -22,6 +22,7 @@ Just run in your project directory
 composer require solidew/casus
 ```
 
+
 #Usage
 Basically all you do is instantiate an object of the Casus Class and you're good to go!
 
@@ -35,7 +36,8 @@ echo $casus->integer();
 ```
 The above example will out put a number between `0` and `PHP_INT_MAX` of your PHP installation.
 
-##Methods
+
+#Methods
 
 ### integer(_$min_, _$max_ [, _$secure_])
 Returns a Number between `$min` & `$max`
@@ -66,7 +68,7 @@ Returns a Floating point number between `$min` & `$max`
 Returns a `boolean` value (`true` or `false`)
 
 
-### alpha($length, $case_randomization [, $secure])
+### alpha(_$length_, _$case_randomization_ [, _$secure_])
 Returns a string consisting of alphabets
 
 **Parameters**  
@@ -77,7 +79,7 @@ Returns a string consisting of alphabets
     > To randomize case or not
 
 
-### alphanum($length, $case_randomization [, $secure])
+### alphanum(_$length_, _$case_randomization_ [, _$secure_])
 Returns a string consisting of alphabets & numbers
 
 **Parameters**  
@@ -88,7 +90,7 @@ Returns a string consisting of alphabets & numbers
     > To randomize case or not
 
 
-### asciiRange($length, $ranges [, $secure])
+### asciiRange(_$length_, _$ranges_ [, _$secure_])
 Returns a string consisting of ascii characters with the the range
 defined by `$range`
 
@@ -119,7 +121,7 @@ defined by `$range`
 
 
 
-### string($length, $charset [, $secure])
+### string(_$length_, _$charset_ [, _$secure_])
 Returns a string consisting of the characters specified in `$charset`
 
 **Parameters**  
@@ -213,3 +215,58 @@ $casus = new Casus(true, $generator);
 The Above example specifies an instance of the default OpenSSL generator.  
 **Note:** If the provided generator is not secure amd `$secure` is set to true, Casus will throw an
 `\solidew\Casus\errors\Insecure` Exception.
+
+#Writing Custom Generators
+##Creating a Generator
+To create a generator all you have to do is write a class that extends
+the abstract class `\solidew\Casus\Generator`. It is absolutely required that you implement the `integer($min, $max)` method. (It's already an Abstract Method, so you should get an error in the event that you forget to imlement it)
+
+Example Generator:
+```PHP
+<?php
+class SuperGenerator extends \solidew\Casus\Generator
+{
+	public function integer($min, $max)
+    {
+    	return rand($min, $max);
+    }
+}
+```
+
+##Cryptographically Secure?
+If your Generator is Cryptographically Secure (uses an CSPRNG Algorithm) then you have to specify it so that Casus dosen't complain.
+
+You can do that simply by setting the `$secure` property in your Generator class to `true` like:
+```PHP
+<?php
+class SuperGenerator extends \solidew\Casus\Generator
+{
+	protected $secure = true;
+    
+	public function integer($min, $max)
+    {
+    	return rand($min, $max);
+    }
+}
+```
+
+##Unit Testing Your Generator
+The simplest way to Unit test your Custom Generator would be to extend the `GeneratorTest` class in Casus's `Tests` directory. The `CeneratorTest` class already extends the `PHPUnit_Framework_TestCase` class so you don't have to.
+
+You do have to implement the `setUp()` though so that it sets the `casus` property of the TestClass Object to an instance of your Generator Class.
+
+Example:
+```PHP
+<?php
+include_once __DIR__.'/../vendor/autoload.php';
+include_once __DIR__.'/GeneratorTest.php';
+
+class SuperGeneratorTest extends \GeneratorTest
+{
+	public function setUp() {
+        $this->casus = new \AwesomePerson\SuperGenerator();
+    }
+}
+```
+
+This will test all the standard methods that comes packaged with Casus. You could go ahead and add tests for your Special Methods.
