@@ -4,7 +4,7 @@ Casus
 > Secure Pseudo Random Number Generators' (CSPRNGs) provided by MCrypt and/or OpenSSL
 
 #Installation
-The easiest way to install Casus for use in your own projects is through composer. You could manualy download the 
+The easiest way to install Casus for use in your own projects is through composer. You could manually download the 
 files and use an alternative [psr-4](http://www.php-fig.org/psr/psr-4/) compatible autoloader to autoload the file 
 in the `src` directory but this is not recommended and highly discouraged.
 
@@ -97,15 +97,15 @@ Returns a string consisting of alphabets & numbers
 
 
 ### asciiRange (_$length_, _$ranges_ [, _$secure_])
-Returns a string consisting of ascii characters with the the range
-defined by `$range`
+Returns a string consisting of ASCII characters with the the range
+defined by `$ranges`
 
 **Parameters**  
 - _int_ `$length` (`32`)
 	> Length of the Random String
     
-- _array_ `$randeg` (`true`)
-    > The Ranges of Character codes in the ascii table to choose from
+- _array_ `$ranges` (`[[65,90],[97,122],[48,57]]`)
+    > The Ranges of Character codes in the ASCII table to choose from
     > It could be a single dimensional array with the first value being
     > the starting point and the second being the ending point  
     > eg. `asciiRange(32, [97, 122])` [A-Z]  
@@ -170,7 +170,7 @@ Array or String
 
 
 ### randomize (_$input_ [, _$secure_])
-Takes a Array or String and returns a randomied version of it.
+Takes a Array or String and returns a randomized version of it.
 
 **Parameters**  
 - _array/string_ `$input`
@@ -187,7 +187,7 @@ Selects random elements from an array or string
 	> Length of generated Array or String
 
 ###byte([_$secure_])
-Returns a Randm Byte
+Returns a Random Byte
 
 
 ### byteString (_$length_ [, _$secure_])
@@ -219,7 +219,7 @@ $generator = new \solidew\Casus\OpenSSL();
 $casus = new Casus(true, $generator);
 ```
 The Above example specifies an instance of the default OpenSSL generator.  
-**Note:** If the provided generator is not secure amd `$secure` is set to true, Casus will throw an
+**Note:** If the provided generator is not secure and `$secure` is set to true, Casus will throw an
 `\solidew\Casus\errors\Insecure` Exception.
 
 #Misc Methods
@@ -241,14 +241,14 @@ Returns the current Generator Instance in use.
 
 ### setGenerator($secure, $generator)
 Returns: `boolean`  
-Set a new geerator based on arguments. (This is actually the method the constructor calls behind the scenes)
+Set a new generator based on arguments. (This is actually the method the constructor calls behind the scenes)
 
 Returns true on success, and throws `solidew\Casus\errors\Insecure` Exception if the first parameter is true but the generator parameter is not a secure generator, or if no secure generator extension was found.
 
 #Writing Custom Generators
 ##Creating a Generator
 To create a generator all you have to do is write a class that extends
-the abstract class `\solidew\Casus\Generator`. It is absolutely required that you implement the `integer($min, $max)` method. (It's already an Abstract Method, so you should get an error in the event that you forget to imlement it)
+the abstract class `\solidew\Casus\Generator`. It is absolutely required that you implement the `integer ($min, $max)` method. (It's already an Abstract Method, so you should get an error in the event that you forget to implement it)
 
 Example Generator:
 ```PHP
@@ -270,7 +270,7 @@ $generator = new SuperGenerator();
 $casus = new \solidew\Casus\Casus(false, $generator);
 ```
 
-Or Just directly instantiate your Generaotr class (the Casus Main Class is useless anyway, it actually just forwards all the method calls to the generator instance)
+Or Just directly instantiate your Generator class (the Casus Main Class is useless anyway, it actually just forwards all the method calls to the generator instance)
 ```PHP
 <?php
 $random = new SuperGenerator();
@@ -278,7 +278,7 @@ $random = new SuperGenerator();
 **Note:** The Casus main class could be used to enforce secure Generators.
 
 ##Cryptographically Secure?
-If your Generator is Cryptographically Secure (uses an CSPRNG Algorithm) then you have to specify it so that Casus dosen't complain.
+If your Generator is Cryptographically Secure (uses an CSPRNG Algorithm) then you have to specify it so that Casus doesn't complain.
 
 You can do that simply by setting the `$secure` property in your Generator class to `true` like:
 ```PHP
