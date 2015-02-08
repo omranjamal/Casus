@@ -22,6 +22,7 @@ abstract class Generator
 
     public function float($min = 0, $max = 1, $precision = 4, $secure = true)
     {
+        $precision = abs($precision);
         $e = pow(10, $precision);
         return round($this->generate($min*$e, $max*$e, $secure)/$e, $precision);
     }
@@ -37,6 +38,8 @@ abstract class Generator
 
     public function alpha($length = 32, $case_randomization = true, $secure = true)
     {
+        $length = abs($length);
+
         if ($case_randomization) {
             $ranges = [[65,90],[97,122]];
         } else {
@@ -48,6 +51,8 @@ abstract class Generator
 
     public function alphanum($length = 32, $case_randomization = true, $secure = true)
     {
+        $length = abs($length);
+
         if ($case_randomization) {
             $ranges = [[65,90],[97,122]];
         } else {
@@ -60,6 +65,8 @@ abstract class Generator
 
     public function asciiRange($length = 32, $ranges = [[65,90],[97,122],[48,57]], $secure = true)
     {
+        $length = abs($length);
+
         if (is_array($ranges)) {
             if (isset($ranges[0]) && !is_array($ranges[0])) {
                 $ranges = [$ranges];
@@ -91,6 +98,8 @@ abstract class Generator
 
     public function string($length = 32, $charset = false, $secure = true)
     {
+        $length = abs($length);
+
         if ($charset === false) {
             $charset = $this->default_charset;
         }
@@ -114,6 +123,7 @@ abstract class Generator
 
     public function integerArray($min = 0, $max = PHP_INT_MAX, $length = 10, $secure = true)
     {
+        $length = abs($length);
         $array = [];
 
         for($i = 0; $i < $length; $i++){
@@ -125,6 +135,7 @@ abstract class Generator
 
     public function floatArray($min = 0, $max = 1, $precision = 4, $length = 10, $secure = true)
     {
+        $length = abs($length);
         $array = [];
 
         for($i = 0; $i < $length; $i++){
@@ -159,6 +170,8 @@ abstract class Generator
 
     public function selectRandom($input, $length = 1, $secure = true)
     {
+        $length = abs($length);
+
         if (is_string($input)) {
             $count = strlen($input);
         } elseif (is_array($input)) {
@@ -169,6 +182,10 @@ abstract class Generator
 
         $rand = 0;
         $old = null;
+
+        if ($length > $count) {
+            $length = $count;
+        }
 
         for ($i = 0; $i < $length; $i++) {
             $rand = $this->generate(0, $count-1, $secure);
@@ -191,6 +208,8 @@ abstract class Generator
 
     public function byteString($length = 32, $secure = true)
     {
+        $length = abs($length);
+
         $str = null;
         for($i=0; $i<$length; $i++){
             $str.= pack('C', $this->generate(0, 255, $secure));
