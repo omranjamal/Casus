@@ -28,6 +28,14 @@ namespace mocks {
             return false;
         }
     }
+
+    class magic extends \solidew\Casus\MCrypt
+    {
+        public function magicAintReal($name)
+        {
+            return 'WORD. '.$name;
+        }
+    }
 }
 
 namespace {
@@ -180,6 +188,22 @@ namespace {
                 '\\solidew\\Casus\\Basic',
                 $casus->getGenerator()
             );
+        }
+
+        public function testInvoke()
+        {
+            $casus = new \solidew\Casus\Casus(false);
+            $val = $casus(4,10);
+            $this->assertInternalType('int', $val);
+            $this->assertTrue($val<=10 && $val>=4);
+        }
+
+        public function testMagicalCalls()
+        {
+            $casus = new \solidew\Casus\Casus(false, (new \mocks\magic));
+            $val = $casus->magicAintReal('Nigga.');
+            $this->assertInternalType('string', $val);
+            $this->assertEquals('WORD. Nigga.', $val);
         }
     }
 }
