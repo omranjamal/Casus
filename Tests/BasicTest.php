@@ -7,8 +7,4 @@ class BasicTest extends \GeneratorTest
     public function setUp() {
         $this->casus = new \solidew\Casus\Basic();
     }
-
-    public function tearDown() {
-        $this->casus = null;
-    }
 }

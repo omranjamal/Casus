@@ -7,8 +7,4 @@ class MCryptTest extends \GeneratorTest
 	public function setUp() {
         $this->casus = new \solidew\Casus\MCrypt();
     }
-
-    public function tearDown() {
-        $this->casus = null;
-    }
 }
