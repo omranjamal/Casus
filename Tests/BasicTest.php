@@ -30,7 +30,7 @@ namespace {
             $val = $casus->float($min, $max, $points);
 
             $this->assertTrue($val<=$max && $val>=$min);
-            $this->assertRegExp('/^[0-9]\.[0-9]{3}$/', (string)$val);
+            $this->assertRegExp('/^[0-9](\.[0-9]{0,3})?$/', (string)$val);
             $this->assertInternalType('float', $val);
         }
 

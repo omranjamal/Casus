@@ -85,12 +85,16 @@ namespace {
                     '\\solidew\\Casus\\MCrypt',
                     $casus->getGenerator()
                 );
+                $secure = true;
             } elseif ($casus->hasOpenSSL()) {
                 $this->assertInstanceOf(
                     '\\solidew\\Casus\\OpenSSL',
                     $casus->getGenerator()
                 );
+                $secure = true;
             }
+
+            $this->assertTrue($secure);
 
 
 

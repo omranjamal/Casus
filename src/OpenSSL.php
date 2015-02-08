@@ -5,8 +5,8 @@ class OpenSSL extends \solidew\Casus\Generator
 {
 	public $secure = true;
 	
-	public function integer($mix, $max)
+	public function integer($min, $max)
 	{
-		
+
 	}
 }
