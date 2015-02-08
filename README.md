@@ -1,0 +1,215 @@
+Casus
+===================
+> Just another Randomizer Library but cooler! With many out of the box features and support for 'Cryptographically 
+> Secure Pseudo Random Number Generators' (CSPRNGs) provided by MCrypt and/or OpenSSL
+
+#Installation
+The easiest way to install Casus for use in your own projects is through composer. You could manualy download the 
+files and use an alternative [psr-4](http://www.php-fig.org/psr/psr-4/) compatible autoloader to autoload the file 
+in the `src` directory but this is not recommended and highly discouraged.
+
+## Through composer.json File
+Add this line in your `composer.json` file and run `composer install` on the command line
+```JSON
+"require": {
+    "solidew/casus": "*"
+}
+```
+
+## Through the command line
+Just run in your project directory
+```
+composer require solidew/casus
+```
+
+#Usage
+Basically all you do is instantiate an object of the Casus Class and you're good to go!
+
+```PHP
+<?php
+//Include the Composer Autoloader
+include "vendor/autoload.php";
+
+$casus = new \solidew\Casus\Casus();
+echo $casus->integer();
+```
+The above example will out put a number between `0` and `PHP_INT_MAX` of your PHP installation.
+
+##Methods
+
+### integer(_$min_, _$max_ [, _$secure_])
+Returns a Number between `$min` & `$max`
+
+**Parameters**  
+- _int_ `$min` (`0`)
+	> Lower Bound of numbers returned
+    
+- _int_ `$max` (`PHP_INT_MAX`)
+    > Upper Bound of numbers returned
+
+
+### float(_$min_, _$max_, _$precision_ [, _$secure_])
+Returns a Floating point number between `$min` & `$max`
+
+**Parameters**  
+- _int_ `$min` (`0`)
+	> Lower Bound of numbers returned
+    
+- _int_ `$max` (`PHP_INT_MAX`)
+    > Upper Bound of numbers returned
+
+- _int_ `$precision` (`4`)
+    > Number of decimal digits
+
+
+### boolean([_$secure_])
+Returns a `boolean` value (`true` or `false`)
+
+
+### alpha($length, $case_randomization [, $secure])
+Returns a string consisting of alphabets
+
+**Parameters**  
+- _int_ `$length` (`32`)
+	> Length of the Random String
+    
+- _boolean_ `$case_randomization` (`true`)
+    > To randomize case or not
+
+
+### alphanum($length, $case_randomization [, $secure])
+Returns a string consisting of alphabets & numbers
+
+**Parameters**  
+- _int_ `$length` (`32`)
+	> Length of the Random String
+    
+- _boolean_ `$case_randomization` (`true`)
+    > To randomize case or not
+
+
+### asciiRange($length, $ranges [, $secure])
+Returns a string consisting of ascii characters with the the range
+defined by `$range`
+
+**Parameters**  
+- _int_ `$length` (`32`)
+	> Length of the Random String
+    
+- _array_ `$randeg` (`true`)
+    > The Ranges of Character codes in the ascii table to choose from
+    > It could be a single dimensional array with the first value being
+    > the starting point and the second being the ending point  
+    > eg. `asciiRange(32, [97, 122])` [A-Z]  
+    >   
+    > **Or**  
+    >   
+    > It could be a multidimensional array defining a set of ranges like:
+    > ```PHP
+    > $ranges = [
+    >   [65,90],
+    >   [97,122],
+    >   [48,57]
+    > ];
+    > 
+    > asciiRange(32, $ranges)
+    > ```
+    > The above produces a string consisting of lower case
+    > letters, upper case letters and numbers
+
+
+
+### string($length, $charset [, $secure])
+Returns a string consisting of the characters specified in `$charset`
+
+**Parameters**  
+- _int_ `$length` (`32`)
+	> Length of the Random String
+    
+- _array/string_ `$charset` (`abcdefghijklmopqrstuvwxyz`)
+    > An Array or String of characters to be used in the random string
+
+
+### integerArray(_$min_, _$max_, _$length_ [, _$secure_])
+Returns an array of random integers
+
+**Parameters**  
+- _int_ `$min` (`0`)
+	> Lower Bound of numbers returned
+    
+- _int_ `$max` (`PHP_INT_MAX`)
+    > Upper Bound of numbers returned
+
+- _int_ `$length` (`10`)
+    > Length of generated Integer Array
+
+
+### floatArray(_$min_, _$max_, _$precision_, _$length_ [, _$secure_])
+Returns an array of random floating point numbers
+
+**Parameters**  
+- _int_ `$min` (`0`)
+	> Lower Bound of numbers returned
+    
+- _int_ `$max` (`PHP_INT_MAX`)
+    > Upper Bound of numbers returned
+
+- _int_ `$precision` (`4`)
+    > Number of decimal digits
+Array or String
+- _int_ `$length` (`10`)
+    > Length of generated Integer Array
+
+
+### randomize(_$input_ [, _$secure_])
+Takes a Array or String and returns a randomied version of it.
+
+**Parameters**  
+- _array/string_ `$input`
+	> The Array or String to be randomized
+
+### selectRandom(_$input_, _$length_ [, _$secure_])
+Selects random elements from an array or string
+
+**Parameters**  
+- _array/string_ `$input`
+	> The Array or String to be randomly selected from
+
+- _int_ `$length` (`10`)
+	> Length of generated Array or String
+
+###byte([_$secure_])
+Returns a Randm Byte
+
+
+### byteString(_$length_ [, _$secure_])
+Returns a Random String of Bytes
+
+**Parameters**  
+- _int_ `$length` (`10`)
+	> Length of generated Byte String
+
+
+## Initialization Options
+### $secure
+**type:** `boolean`  
+**default:** `true`  
+To use a Cryptographically Secure Generator or not. By default, a CSPRNG
+like `MCrypt` or `OpenSSL` will be used
+```PHP
+$casus = new Casus(false);
+```
+The Above example makes Casus use a Generator that is not cryptographically secure. (It just uses 
+PHP's built in `mt_rand` function)
+
+### $generator
+**type:** `Generator`  
+**default:** `null`  
+Injects the Generator Instance to use. (Must be an instance of a child of `\solidew\Casus\Generator`)
+```PHP
+$generator = new \solidew\Casus\OpenSSL();
+$casus = new Casus(true, $generator);
+```
+The Above example specifies an instance of the default OpenSSL generator.  
+**Note:** If the provided generator is not secure amd `$secure` is set to true, Casus will throw an
+`\solidew\Casus\errors\Insecure` Exception.
