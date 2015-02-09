@@ -41,7 +41,7 @@ The casus class actually forwards all method calls to the generator instance, th
 <?php
 $casus = new \solidew\Casus\Casus();
 $random_generator = $casus->getGenerator();
-echo $casus->integer();
+echo $random_generator->integer();
 ```
 #Methods
 
@@ -70,7 +70,7 @@ Returns a Floating point number between `$min` & `$max`
     > Number of decimal digits
 
 
-### boolean([_$secure_])
+### boolean ([_$secure_])
 Returns a `boolean` value (`true` or `false`)
 
 
@@ -186,7 +186,7 @@ Selects random elements from an array or string
 - _int_ `$length` (`10`)
 	> Length of generated Array or String
 
-###byte([_$secure_])
+###byte ([_$secure_])
 Returns a Random Byte
 
 
@@ -231,7 +231,7 @@ Returns if the current Generator in use is Secure or not.
 Returns: `boolean`  
 Returns if your PHP installation has the MCrypt extension enabled or not.
 
-### hasMCrypt()
+### hasOpenSSL()
 Returns: `boolean`  
 Returns if your PHP installation has the OpenSSL extension enabled or not.
 
@@ -239,7 +239,7 @@ Returns if your PHP installation has the OpenSSL extension enabled or not.
 Returns: `Generator`  
 Returns the current Generator Instance in use.
 
-### setGenerator($secure, $generator)
+### setGenerator(_$secure_, _$generator_)
 Returns: `boolean`  
 Set a new generator based on arguments. (This is actually the method the constructor calls behind the scenes)
 
