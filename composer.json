@@ -1,6 +1,6 @@
 {
     "name": "solidew/casus",
-    "description": "Just another Randomizer Library but cooler!",
+    "description": "A Library to Generate anything Random.",
     "require": {
          "php": ">=5.4.0",
          "ext-mcrypt": "*"
