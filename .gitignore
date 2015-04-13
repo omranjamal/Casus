@@ -2,3 +2,4 @@
 .fuse_*
 *~
 test.php
+/coverage-report/
