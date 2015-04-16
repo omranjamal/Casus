@@ -1,0 +1,4 @@
+Tests/ export-ignore
+.git* export-ignore
+README.md export-ignore
+phpunit.xml export-ignore
