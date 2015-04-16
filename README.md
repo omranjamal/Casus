@@ -44,6 +44,22 @@ $random_generator = $casus->getGenerator();
 echo $random_generator->integer();
 ```
 #Methods
+## Method List
+- [integer](#integer-min-max--secure) - Generates a random integer
+- [float](#float-min-max-precision--secure) - Generates a random floating point number
+- [boolean](#boolean-secure) - Generates a random boolean value
+- [alpha](#alpha-length-case_randomization--secure) - Generates a random string with alphabets
+- [alphanum](#alphanum-length-case_randomization--secure) - Generates a random string with alphabets and numbers
+- [asciiRange](#asciirange-length-ranges--secure) - Generates a random string from a range in the ascii table
+- [string](#string-length-charset--secure) - Generates a random string from a character set
+- [integerArray](#integerarray-min-max-length--secure) - Generates an array of random Integers
+- [floatArray](#floatarray-min-max-precision-length--secure) - Generates an array of random floating point integers
+- [randomize](#randomize-input--secure) - Takes an array or string and randomizes its order
+- [selectRandom](#selectrandom-input-length--secure) - Selects elements from an array at random
+- [byte](#byte-secure) - Generates a random byte
+- [byteString](#bytestring-length--secure) - Generates a string of random bytes
+
+The `$secure` parameter on each method is used to temporarily override the secure generator for an insecure one, in a secure instance. (This can be done by setting it to `false`). By default it is set to `true`.
 
 ### integer (_$min_, _$max_ [, _$secure_])
 Returns a Number between `$min` & `$max`
@@ -186,7 +202,7 @@ Selects random elements from an array or string
 - _int_ `$length` (`10`)
 	> Length of generated Array or String
 
-###byte ([_$secure_])
+### byte ([_$secure_])
 Returns a Random Byte
 
 
