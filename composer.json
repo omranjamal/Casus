@@ -1,5 +1,5 @@
 {
-    "name": "solidew/casus",
+    "name": "hedronium/casus",
     "description": "A Library to Generate anything Random.",
     "require": {
          "php": ">=5.4.0",
