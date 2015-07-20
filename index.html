@@ -1,34 +1,25 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Casus by solidew</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
+    <title>Casus by Hedronium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Casus</h1>
-        <p>Just another Randomizer Library but cooler!</p>
+    <section class="page-header">
+      <h1 class="project-name">Casus</h1>
+      <h2 class="project-tagline">Just another Randomizer Library but cooler!</h2>
+      <a href="https://github.com/Hedronium/Casus" class="btn">View on GitHub</a>
+      <a href="https://github.com/Hedronium/Casus/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Hedronium/Casus/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/solidew/Casus">View the Project on GitHub <small>solidew/Casus</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/solidew/Casus/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/solidew/Casus/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/solidew/Casus">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="casus" class="anchor" href="#casus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Casus</h1>
 
 <blockquote>
@@ -48,8 +39,8 @@ in the <code>src</code> directory but this is not recommended and highly discour
 
 <p>Add this line in your <code>composer.json</code> file and run <code>composer install</code> on the command line</p>
 
-<div class="highlight highlight-JSON"><pre><span class="pl-s1"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: {
-    <span class="pl-s1"><span class="pl-pds">"</span>solidew/casus<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
+<div class="highlight highlight-JSON"><pre><span class="pl-s"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>solidew/casus<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>*<span class="pl-pds">"</span></span>
 }</pre></div>
 
 <h2>
@@ -65,27 +56,61 @@ in the <code>src</code> directory but this is not recommended and highly discour
 
 <p>Basically all you do is instantiate an object of the Casus Class and you're good to go!</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-c">//Include the Composer Autoloader</span></span>
-<span class="pl-s2"><span class="pl-k">include</span> <span class="pl-s1"><span class="pl-pds">"</span>vendor/autoload.php<span class="pl-pds">"</span></span>;</span>
-<span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-vo">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-s3">Casus</span>();</span>
-<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$casus</span><span class="pl-k">-&gt;</span>integer();</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//Include the Composer Autoloader</span></span>
+<span class="pl-s1"><span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>vendor/autoload.php<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-c1">Casus</span>();</span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$casus</span><span class="pl-k">-&gt;</span>integer();</span></pre></div>
 
 <p>The above example will out put a number between <code>0</code> and <code>PHP_INT_MAX</code> of your PHP installation.</p>
 
 <p>The casus class actually forwards all method calls to the generator instance, thus you could, if you prefer to, get the generator instance and call methods directly on it. Like:</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-vo">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-s3">Casus</span>();</span>
-<span class="pl-s2"><span class="pl-vo">$random_generator</span> <span class="pl-k">=</span> <span class="pl-vo">$casus</span><span class="pl-k">-&gt;</span>getGenerator();</span>
-<span class="pl-s2"><span class="pl-s3">echo</span> <span class="pl-vo">$random_generator</span><span class="pl-k">-&gt;</span>integer();</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-c1">Casus</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$random_generator</span> <span class="pl-k">=</span> <span class="pl-smi">$casus</span><span class="pl-k">-&gt;</span>getGenerator();</span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$random_generator</span><span class="pl-k">-&gt;</span>integer();</span></pre></div>
 
 <h1>
 <a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h1>
 
 <h2>
-<a id="integer-min-max--secure" class="anchor" href="#integer-min-max--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>integer (<em>$min</em>, <em>$max</em> [, <em>$secure</em>])</h2>
+<a id="method-list" class="anchor" href="#method-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method List</h2>
+
+<ul>
+<li>
+<a href="#integer-min-max--secure">integer</a> - Generates a random integer</li>
+<li>
+<a href="#float-min-max-precision--secure">float</a> - Generates a random floating point number</li>
+<li>
+<a href="#boolean-secure">boolean</a> - Generates a random boolean value</li>
+<li>
+<a href="#alpha-length-case_randomization--secure">alpha</a> - Generates a random string with alphabets</li>
+<li>
+<a href="#alphanum-length-case_randomization--secure">alphanum</a> - Generates a random string with alphabets and numbers</li>
+<li>
+<a href="#asciirange-length-ranges--secure">asciiRange</a> - Generates a random string from a range in the ascii table</li>
+<li>
+<a href="#string-length-charset--secure">string</a> - Generates a random string from a character set</li>
+<li>
+<a href="#integerarray-min-max-length--secure">integerArray</a> - Generates an array of random Integers</li>
+<li>
+<a href="#floatarray-min-max-precision-length--secure">floatArray</a> - Generates an array of random floating point integers</li>
+<li>
+<a href="#randomize-input--secure">randomize</a> - Takes an array or string and randomizes its order</li>
+<li>
+<a href="#selectrandom-input-length--secure">selectRandom</a> - Selects elements from an array at random</li>
+<li>
+<a href="#byte-secure">byte</a> - Generates a random byte</li>
+<li>
+<a href="#bytestring-length--secure">byteString</a> - Generates a string of random bytes</li>
+</ul>
+
+<p>The <code>$secure</code> parameter on each method is used to temporarily override the secure generator for an insecure one, in a secure instance. (This can be done by setting it to <code>false</code>). By default it is set to <code>true</code>.</p>
+
+<h3>
+<a id="integer-min-max--secure" class="anchor" href="#integer-min-max--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>integer (<em>$min</em>, <em>$max</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a Number between <code>$min</code> &amp; <code>$max</code></p>
 
@@ -108,8 +133,8 @@ in the <code>src</code> directory but this is not recommended and highly discour
 </li>
 </ul>
 
-<h2>
-<a id="float-min-max-precision--secure" class="anchor" href="#float-min-max-precision--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>float (<em>$min</em>, <em>$max</em>, <em>$precision</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="float-min-max-precision--secure" class="anchor" href="#float-min-max-precision--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>float (<em>$min</em>, <em>$max</em>, <em>$precision</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a Floating point number between <code>$min</code> &amp; <code>$max</code></p>
 
@@ -139,13 +164,13 @@ in the <code>src</code> directory but this is not recommended and highly discour
 </li>
 </ul>
 
-<h2>
-<a id="boolean-secure" class="anchor" href="#boolean-secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>boolean ([<em>$secure</em>])</h2>
+<h3>
+<a id="boolean-secure" class="anchor" href="#boolean-secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>boolean ([<em>$secure</em>])</h3>
 
 <p>Returns a <code>boolean</code> value (<code>true</code> or <code>false</code>)</p>
 
-<h2>
-<a id="alpha-length-case_randomization--secure" class="anchor" href="#alpha-length-case_randomization--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>alpha (<em>$length</em>, <em>$case_randomization</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="alpha-length-case_randomization--secure" class="anchor" href="#alpha-length-case_randomization--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>alpha (<em>$length</em>, <em>$case_randomization</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a string consisting of alphabets</p>
 
@@ -168,8 +193,8 @@ in the <code>src</code> directory but this is not recommended and highly discour
 </li>
 </ul>
 
-<h2>
-<a id="alphanum-length-case_randomization--secure" class="anchor" href="#alphanum-length-case_randomization--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>alphanum (<em>$length</em>, <em>$case_randomization</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="alphanum-length-case_randomization--secure" class="anchor" href="#alphanum-length-case_randomization--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>alphanum (<em>$length</em>, <em>$case_randomization</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a string consisting of alphabets &amp; numbers</p>
 
@@ -192,8 +217,8 @@ in the <code>src</code> directory but this is not recommended and highly discour
 </li>
 </ul>
 
-<h2>
-<a id="asciirange-length-ranges--secure" class="anchor" href="#asciirange-length-ranges--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>asciiRange (<em>$length</em>, <em>$ranges</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="asciirange-length-ranges--secure" class="anchor" href="#asciirange-length-ranges--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>asciiRange (<em>$length</em>, <em>$ranges</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a string consisting of ASCII characters with the the range
 defined by <code>$ranges</code></p>
@@ -221,13 +246,13 @@ eg. <code>asciiRange(32, [97, 122])</code> [A-Z]  </p>
 
 <p>It could be a multidimensional array defining a set of ranges like:</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-s2"><span class="pl-vo">$ranges</span> <span class="pl-k">=</span> [</span>
-<span class="pl-s2">  [<span class="pl-c1">65</span>,<span class="pl-c1">90</span>],</span>
-<span class="pl-s2">  [<span class="pl-c1">97</span>,<span class="pl-c1">122</span>],</span>
-<span class="pl-s2">  [<span class="pl-c1">48</span>,<span class="pl-c1">57</span>]</span>
-<span class="pl-s2">];</span>
-<span class="pl-s2"></span>
-<span class="pl-s2">asciiRange(<span class="pl-c1">32</span>, <span class="pl-vo">$ranges</span>)</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-s1"><span class="pl-smi">$ranges</span> <span class="pl-k">=</span> [</span>
+<span class="pl-s1">  [<span class="pl-c1">65</span>,<span class="pl-c1">90</span>],</span>
+<span class="pl-s1">  [<span class="pl-c1">97</span>,<span class="pl-c1">122</span>],</span>
+<span class="pl-s1">  [<span class="pl-c1">48</span>,<span class="pl-c1">57</span>]</span>
+<span class="pl-s1">];</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">asciiRange(<span class="pl-c1">32</span>, <span class="pl-smi">$ranges</span>)</span></pre></div>
 
 <p>The above produces a string consisting of lower case
 letters, upper case letters and numbers</p>
@@ -235,8 +260,8 @@ letters, upper case letters and numbers</p>
 </li>
 </ul>
 
-<h2>
-<a id="string-length-charset--secure" class="anchor" href="#string-length-charset--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>string (<em>$length</em>, <em>$charset</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="string-length-charset--secure" class="anchor" href="#string-length-charset--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>string (<em>$length</em>, <em>$charset</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a string consisting of the characters specified in <code>$charset</code></p>
 
@@ -259,8 +284,8 @@ letters, upper case letters and numbers</p>
 </li>
 </ul>
 
-<h2>
-<a id="integerarray-min-max-length--secure" class="anchor" href="#integerarray-min-max-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>integerArray (<em>$min</em>, <em>$max</em>, <em>$length</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="integerarray-min-max-length--secure" class="anchor" href="#integerarray-min-max-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>integerArray (<em>$min</em>, <em>$max</em>, <em>$length</em> [, <em>$secure</em>])</h3>
 
 <p>Returns an array of random integers</p>
 
@@ -290,8 +315,8 @@ letters, upper case letters and numbers</p>
 </li>
 </ul>
 
-<h2>
-<a id="floatarray-min-max-precision-length--secure" class="anchor" href="#floatarray-min-max-precision-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>floatArray (<em>$min</em>, <em>$max</em>, <em>$precision</em>, <em>$length</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="floatarray-min-max-precision-length--secure" class="anchor" href="#floatarray-min-max-precision-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>floatArray (<em>$min</em>, <em>$max</em>, <em>$precision</em>, <em>$length</em> [, <em>$secure</em>])</h3>
 
 <p>Returns an array of random floating point numbers</p>
 
@@ -325,8 +350,8 @@ Array or String</p>
 &gt; Length of generated Integer Array</li>
 </ul>
 
-<h2>
-<a id="randomize-input--secure" class="anchor" href="#randomize-input--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>randomize (<em>$input</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="randomize-input--secure" class="anchor" href="#randomize-input--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>randomize (<em>$input</em> [, <em>$secure</em>])</h3>
 
 <p>Takes a Array or String and returns a randomized version of it.</p>
 
@@ -338,8 +363,8 @@ Array or String</p>
 &gt; The Array or String to be randomized</li>
 </ul>
 
-<h2>
-<a id="selectrandom-input-length--secure" class="anchor" href="#selectrandom-input-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>selectRandom (<em>$input</em>, <em>$length</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="selectrandom-input-length--secure" class="anchor" href="#selectrandom-input-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>selectRandom (<em>$input</em>, <em>$length</em> [, <em>$secure</em>])</h3>
 
 <p>Selects random elements from an array or string</p>
 
@@ -362,13 +387,13 @@ Array or String</p>
 </li>
 </ul>
 
-<h2>
-<a id="byte-secure" class="anchor" href="#byte-secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>byte ([<em>$secure</em>])</h2>
+<h3>
+<a id="byte-secure" class="anchor" href="#byte-secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>byte ([<em>$secure</em>])</h3>
 
 <p>Returns a Random Byte</p>
 
-<h2>
-<a id="bytestring-length--secure" class="anchor" href="#bytestring-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>byteString (<em>$length</em> [, <em>$secure</em>])</h2>
+<h3>
+<a id="bytestring-length--secure" class="anchor" href="#bytestring-length--secure" aria-hidden="true"><span class="octicon octicon-link"></span></a>byteString (<em>$length</em> [, <em>$secure</em>])</h3>
 
 <p>Returns a Random String of Bytes</p>
 
@@ -391,7 +416,7 @@ Array or String</p>
 To use a Cryptographically Secure Generator or not. By default, a CSPRNG
 like <code>MCrypt</code> or <code>OpenSSL</code> will be used</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-s2"><span class="pl-vo">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">Casus</span>(<span class="pl-c1">false</span>);</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-s1"><span class="pl-smi">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Casus</span>(<span class="pl-c1">false</span>);</span></pre></div>
 
 <p>The Above example makes Casus use a Generator that is not cryptographically secure. (It just uses 
 PHP's built in <code>mt_rand</code> function)</p>
@@ -403,8 +428,8 @@ PHP's built in <code>mt_rand</code> function)</p>
 <strong>default:</strong> <code>null</code><br>
 Injects the Generator Instance to use. (Must be an instance of a child of <code>\solidew\Casus\Generator</code>)</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-s2"><span class="pl-vo">$generator</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-s3">OpenSSL</span>();</span>
-<span class="pl-s2"><span class="pl-vo">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">Casus</span>(<span class="pl-c1">true</span>, <span class="pl-vo">$generator</span>);</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-s1"><span class="pl-smi">$generator</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-c1">OpenSSL</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Casus</span>(<span class="pl-c1">true</span>, <span class="pl-smi">$generator</span>);</span></pre></div>
 
 <p>The Above example specifies an instance of the default OpenSSL generator.<br>
 <strong>Note:</strong> If the provided generator is not secure and <code>$secure</code> is set to true, Casus will throw an
@@ -456,28 +481,28 @@ the abstract class <code>\solidew\Casus\Generator</code>. It is absolutely requi
 
 <p>Example Generator:</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">SuperGenerator</span> <span class="pl-s">extends</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-e">Generator</span></span>
-<span class="pl-s2">{</span>
-<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">integer</span>(<span class="pl-vo">$min</span>, <span class="pl-vo">$max</span>)</span>
-<span class="pl-s2">    {</span>
-<span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-s3">rand</span>(<span class="pl-vo">$min</span>, <span class="pl-vo">$max</span>);</span>
-<span class="pl-s2">    }</span>
-<span class="pl-s2">}</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">SuperGenerator</span> <span class="pl-k">extends</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-e">Generator</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">integer</span>(<span class="pl-smi">$min</span>, <span class="pl-smi">$max</span>)</span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        <span class="pl-k">return</span> <span class="pl-c1">rand</span>(<span class="pl-smi">$min</span>, <span class="pl-smi">$max</span>);</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span></pre></div>
 
 <h2>
 <a id="using-your-custom-generator" class="anchor" href="#using-your-custom-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using your Custom Generator</h2>
 
 <p>Just Pass it in as the second parameter of the Casus constructor</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-vo">$generator</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">SuperGenerator</span>();</span>
-<span class="pl-s2"><span class="pl-vo">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-s3">Casus</span>(<span class="pl-c1">false</span>, <span class="pl-vo">$generator</span>);</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$generator</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">SuperGenerator</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-c1">Casus</span>(<span class="pl-c1">false</span>, <span class="pl-smi">$generator</span>);</span></pre></div>
 
 <p>Or Just directly instantiate your Generator class (the Casus Main Class is useless anyway, it actually just forwards all the method calls to the generator instance)</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-vo">$random</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">SuperGenerator</span>();</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$random</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">SuperGenerator</span>();</span></pre></div>
 
 <p><strong>Note:</strong> The Casus main class could be used to enforce secure Generators.</p>
 
@@ -488,16 +513,16 @@ the abstract class <code>\solidew\Casus\Generator</code>. It is absolutely requi
 
 <p>You can do that simply by setting the <code>$secure</code> property in your Generator class to <code>true</code> like:</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">SuperGenerator</span> <span class="pl-s">extends</span> <span class="pl-s3">\solidew\Casus\</span><span class="pl-e">Generator</span></span>
-<span class="pl-s2">{</span>
-<span class="pl-s2">    <span class="pl-s">protected</span> <span class="pl-vo">$secure</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
-<span class="pl-s2"></span>
-<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">integer</span>(<span class="pl-vo">$min</span>, <span class="pl-vo">$max</span>)</span>
-<span class="pl-s2">    {</span>
-<span class="pl-s2">        <span class="pl-k">return</span> <span class="pl-s3">rand</span>(<span class="pl-vo">$min</span>, <span class="pl-vo">$max</span>);</span>
-<span class="pl-s2">    }</span>
-<span class="pl-s2">}</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">SuperGenerator</span> <span class="pl-k">extends</span> <span class="pl-c1">\solidew\Casus\</span><span class="pl-e">Generator</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">protected</span> <span class="pl-smi">$secure</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">integer</span>(<span class="pl-smi">$min</span>, <span class="pl-smi">$max</span>)</span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        <span class="pl-k">return</span> <span class="pl-c1">rand</span>(<span class="pl-smi">$min</span>, <span class="pl-smi">$max</span>);</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span></pre></div>
 
 <h2>
 <a id="unit-testing-your-generator" class="anchor" href="#unit-testing-your-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit Testing Your Generator</h2>
@@ -508,26 +533,28 @@ the abstract class <code>\solidew\Casus\Generator</code>. It is absolutely requi
 
 <p>Example:</p>
 
-<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-k">include_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s1"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
-<span class="pl-s2"><span class="pl-k">include_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s1"><span class="pl-pds">'</span>/GeneratorTest.php<span class="pl-pds">'</span></span>;</span>
-<span class="pl-s2"></span>
-<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">SuperGeneratorTest</span> <span class="pl-s">extends</span> <span class="pl-s3">\</span><span class="pl-e">GeneratorTest</span></span>
-<span class="pl-s2">{</span>
-<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">setUp</span>() {</span>
-<span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span><span class="pl-vo">casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">\AwesomePerson\</span><span class="pl-s3">SuperGenerator</span>();</span>
-<span class="pl-s2">    }</span>
-<span class="pl-s2">}</span></pre></div>
+<div class="highlight highlight-PHP"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">include_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-k">include_once</span> <span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>/GeneratorTest.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">SuperGeneratorTest</span> <span class="pl-k">extends</span> <span class="pl-c1">\</span><span class="pl-e">GeneratorTest</span></span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">setUp</span>() {</span>
+<span class="pl-s1">        <span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">casus</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\AwesomePerson\</span><span class="pl-c1">SuperGenerator</span>();</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">}</span></pre></div>
 
 <p>This will test all the standard methods that comes packaged with Casus. You could go ahead and add tests for your Special Methods.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/solidew">solidew</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Hedronium/Casus">Casus</a> is maintained by <a href="https://github.com/Hedronium">Hedronium</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -540,3 +567,4 @@ the abstract class <code>\solidew\Casus\Generator</code>. It is absolutely requi
 
   </body>
 </html>
+
