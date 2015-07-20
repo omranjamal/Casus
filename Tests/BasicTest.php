@@ -4,7 +4,7 @@ include_once __DIR__.'/GeneratorTest.php';
 
 class BasicTest extends \GeneratorTest
 {
-    public function setUp() {
-        $this->casus = new \solidew\Casus\Basic();
-    }
+	public function setUp() {
+		$this->casus = new \hedronium\Casus\Basic();
+	}
 }

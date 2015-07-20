@@ -1,7 +1,7 @@
 <?php
-namespace solidew\Casus;
+namespace hedronium\Casus;
 
-class OpenSSL extends \solidew\Casus\Generator 
+class OpenSSL extends \hedronium\Casus\Generator 
 {
 	public $secure = true;
 	

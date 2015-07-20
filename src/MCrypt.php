@@ -1,10 +1,10 @@
 <?php
-namespace solidew\Casus;
+namespace hedronium\Casus;
 
 class MCrypt extends Generator 
 {
-    protected $secure = true;
-    protected $source = MCRYPT_DEV_URANDOM;
+	protected $secure = true;
+	protected $source = MCRYPT_DEV_URANDOM;
 	
 	public function integer($min = 0, $max = PHP_INT_MAX)
 	{
@@ -23,12 +23,12 @@ class MCrypt extends Generator
 	}
 
 	public function byte($secure = true)
-    {
-        return mcrypt_create_iv(1, $this->source);
-    }
+	{
+		return mcrypt_create_iv(1, $this->source);
+	}
 
-    public function byteString($length = 32, $secure = true)
-    {
-        return mcrypt_create_iv($length, $this->source);
-    }
+	public function byteString($length = 32, $secure = true)
+	{
+		return mcrypt_create_iv($length, $this->source);
+	}
 }

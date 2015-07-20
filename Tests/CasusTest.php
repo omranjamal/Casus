@@ -1,6 +1,6 @@
 <?php
 namespace mocks {
-    class noMCrypt extends \solidew\Casus\Casus
+    class noMCrypt extends \hedronium\Casus\Casus
     {
         public function hasMCrypt()
         {
@@ -8,7 +8,7 @@ namespace mocks {
         }
     }
 
-    class noOpenSSL extends \solidew\Casus\Casus
+    class noOpenSSL extends \hedronium\Casus\Casus
     {
         public function hasOpenSSL()
         {
@@ -16,7 +16,7 @@ namespace mocks {
         }
     }
 
-    class noSecureAlgo extends \solidew\Casus\Casus
+    class noSecureAlgo extends \hedronium\Casus\Casus
     {
         public function hasMCrypt()
         {
@@ -29,7 +29,7 @@ namespace mocks {
         }
     }
 
-    class magic extends \solidew\Casus\MCrypt
+    class magic extends \hedronium\Casus\MCrypt
     {
         public function magicAintReal($name)
         {
@@ -45,7 +45,7 @@ namespace {
     {
         public function testHasMCrypt()
         {
-            $casus = new \solidew\Casus\Casus();
+            $casus = new \hedronium\Casus\Casus();
             $casus->setGenerator();
             $this->assertEquals(
                 function_exists("mcrypt_encrypt"),
@@ -55,7 +55,7 @@ namespace {
 
         public function testHasOpenSSL()
         {
-            $casus = new \solidew\Casus\Casus();
+            $casus = new \hedronium\Casus\Casus();
             $casus->setGenerator();
             $this->assertEquals(
                 function_exists("openssl_random_pseudo_bytes"), 
@@ -66,17 +66,17 @@ namespace {
         public function testDefaultConstruction()
         {
             //With Default Values
-            $casus = new \solidew\Casus\Casus();
+            $casus = new \hedronium\Casus\Casus();
             $casus->setGenerator();
             
             if ($casus->hasMCrypt()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\MCrypt',
+                    '\\hedronium\\Casus\\MCrypt',
                     $casus->getGenerator()
                 );
             } elseif ($casus->hasOpenSSL()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\OpenSSL',
+                    '\\hedronium\\Casus\\OpenSSL',
                     $casus->getGenerator()
                 );
             }
@@ -85,18 +85,18 @@ namespace {
         public function testExplicitValueSettings()
         {
             //With one value explicitly set
-            $casus = new \solidew\Casus\Casus();
+            $casus = new \hedronium\Casus\Casus();
             $casus->setGenerator(true);
             
             if ($casus->hasMCrypt()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\MCrypt',
+                    '\\hedronium\\Casus\\MCrypt',
                     $casus->getGenerator()
                 );
                 $secure = true;
             } elseif ($casus->hasOpenSSL()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\OpenSSL',
+                    '\\hedronium\\Casus\\OpenSSL',
                     $casus->getGenerator()
                 );
                 $secure = true;
@@ -107,16 +107,16 @@ namespace {
 
 
             //With both values explicitly set
-            $casus = new \solidew\Casus\Casus(true, null);
+            $casus = new \hedronium\Casus\Casus(true, null);
 
             if ($casus->hasMCrypt()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\MCrypt',
+                    '\\hedronium\\Casus\\MCrypt',
                     $casus->getGenerator()
                 );
             } elseif ($casus->hasOpenSSL()) {
                 $this->assertInstanceOf(
-                    '\\solidew\\Casus\\OpenSSL',
+                    '\\hedronium\\Casus\\OpenSSL',
                     $casus->getGenerator()
                 );
             }
@@ -128,7 +128,7 @@ namespace {
             $casus = new \mocks\noMCrypt(true, null);
 
             $this->assertInstanceOf(
-                '\\solidew\\Casus\\OpenSSL',
+                '\\hedronium\\Casus\\OpenSSL',
                 $casus->getGenerator()
             );
         }
@@ -139,13 +139,13 @@ namespace {
             $casus = new \mocks\noOpenSSL(true, null);
 
             $this->assertInstanceOf(
-                '\\solidew\\Casus\\MCrypt',
+                '\\hedronium\\Casus\\MCrypt',
                 $casus->getGenerator()
             );
         }
 
         /**
-         * @expectedException \solidew\Casus\errors\Insecure
+         * @expectedException \hedronium\Casus\errors\Insecure
          */
         public function testConstructionWithoutAnySecureExtension()
         {
@@ -155,44 +155,44 @@ namespace {
 
         public function testSetGenerator()
         {
-            $generator = new \solidew\Casus\MCrypt();
-            $casus = new \solidew\Casus\Casus(true, $generator);
+            $generator = new \hedronium\Casus\MCrypt();
+            $casus = new \hedronium\Casus\Casus(true, $generator);
             $this->assertEquals($generator, $casus->getGenerator());
 
-            $generator = new \solidew\Casus\OpenSSL();
-            $casus = new \solidew\Casus\Casus(true, $generator);
+            $generator = new \hedronium\Casus\OpenSSL();
+            $casus = new \hedronium\Casus\Casus(true, $generator);
             $this->assertEquals($generator, $casus->getGenerator());
         }
 
         /**
-         * @expectedException \solidew\Casus\errors\Insecure
+         * @expectedException \hedronium\Casus\errors\Insecure
          */
         public function testInsecureGeneratorException()
         {
-            $generator = new \solidew\Casus\Basic();
-            $casus = new \solidew\Casus\Casus(true, $generator);
+            $generator = new \hedronium\Casus\Basic();
+            $casus = new \hedronium\Casus\Casus(true, $generator);
         }
 
         public function testSetBasicGenerator()
         {
-            $generator = new \solidew\Casus\Basic();
-            $casus = new \solidew\Casus\Casus(false, $generator);
+            $generator = new \hedronium\Casus\Basic();
+            $casus = new \hedronium\Casus\Casus(false, $generator);
             $this->assertEquals($generator, $casus->getGenerator());
         }
 
         public function testDefaultBasicGenerator()
         {
-            $casus = new \solidew\Casus\Casus(false);
+            $casus = new \hedronium\Casus\Casus(false);
 
             $this->assertInstanceOf(
-                '\\solidew\\Casus\\Basic',
+                '\\hedronium\\Casus\\Basic',
                 $casus->getGenerator()
             );
         }
 
         public function testInvoke()
         {
-            $casus = new \solidew\Casus\Casus(false);
+            $casus = new \hedronium\Casus\Casus(false);
             $val = $casus(4,10);
             $this->assertInternalType('int', $val);
             $this->assertTrue($val<=10 && $val>=4);
@@ -200,7 +200,7 @@ namespace {
 
         public function testMagicalCalls()
         {
-            $casus = new \solidew\Casus\Casus(false, (new \mocks\magic));
+            $casus = new \hedronium\Casus\Casus(false, (new \mocks\magic));
             $val = $casus->magicAintReal('Nigga.');
             $this->assertInternalType('string', $val);
             $this->assertEquals('WORD. Nigga.', $val);

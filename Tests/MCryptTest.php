@@ -5,6 +5,6 @@ include_once __DIR__.'/GeneratorTest.php';
 class MCryptTest extends \GeneratorTest
 {
 	public function setUp() {
-        $this->casus = new \solidew\Casus\MCrypt();
-    }
+		$this->casus = new \hedronium\Casus\MCrypt();
+	}
 }

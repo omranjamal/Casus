@@ -1,5 +1,5 @@
 <?php
-namespace solidew\Casus\errors;
+namespace hedronium\Casus\errors;
 
 class ByteOverflow extends \Exception 
 {

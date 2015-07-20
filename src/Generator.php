@@ -1,5 +1,5 @@
 <?php
-namespace solidew\Casus;
+namespace hedronium\Casus;
 
 abstract class Generator
 {

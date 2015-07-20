@@ -1,6 +1,6 @@
 <?php
 namespace mocks {
-    class Generator extends \solidew\Casus\Basic
+    class Generator extends \hedronium\Casus\Basic
     {
     }
 }
@@ -167,7 +167,7 @@ namespace {
         }
 
         /**
-         * @expectedException \solidew\Casus\errors\InvalidRange
+         * @expectedException \hedronium\Casus\errors\InvalidRange
          */
         public function testAsciiRangeInvalidRange()
         {
@@ -176,7 +176,7 @@ namespace {
         }
 
         /**
-         * @expectedException \solidew\Casus\errors\InvalidRange
+         * @expectedException \hedronium\Casus\errors\InvalidRange
          */
         public function testAsciiRangeNoRange()
         {
