@@ -12,7 +12,8 @@ abstract class Generator
         return $this->secure;
     }
 
-    protected function generate($min = 0, $max = PHP_INT_MAX, $secure = true){
+    protected function generate($min = 0, $max = PHP_INT_MAX, $secure = true)
+    {
         if ($secure) {
             return $this->integer($min, $max);
         } else {
@@ -131,6 +132,37 @@ abstract class Generator
         }
 
         return $array;
+    }
+
+    public function uniqueIntegerArray($min = 0, $max = PHP_INT_MAX, $length = 10, $secure = true)
+    {
+        $length = abs($length);
+        $array = [];
+
+        if (($max-$min)<$length) {
+            throw new errors\InvalidRange('The range of min-max can\'t be smaller than length.');
+        }
+
+        $cycles = $min + $length;
+
+        for ($i = $min; $i < $cycles; $i++) {
+
+            if (!isset($array[$i])) {
+                $array[$i] = $i;
+            }
+
+            $rand = $this->generate($min, $max, $secure);
+            $tmp = $array[$i];
+
+            if (!isset($array[$rand])) {
+                $array[$rand] = $rand;
+            }
+
+            $array[$i] = $array[$rand];
+            $array[$rand] = $tmp;
+        }
+
+        return array_slice($array, 0, $length);
     }
 
     public function floatArray($min = 0, $max = 1, $precision = 4, $length = 10, $secure = true)

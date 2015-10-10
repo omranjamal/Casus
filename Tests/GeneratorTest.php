@@ -228,6 +228,32 @@ namespace {
             $this->assertContainsOnly('int', $val);
         }
 
+        public function testuniqueIntegerArray()
+        {
+            $casus = $this->casus;
+            $val = $casus->uniqueIntegerArray(40, 60, 20);
+            $this->assertInternalType('array', $val);
+            $this->assertEquals(count($val), 20);
+            $this->assertContainsOnly('int', $val);
+
+            foreach ($val as $value) {
+                $this->assertLessThan(81, $value);
+                $this->assertGreaterThan(39, $value);
+            }
+
+            $max = max(array_values(array_count_values($val)));
+            $this->assertEquals(1, $max);
+        }
+
+        /**
+         * @expectedException \hedronium\Casus\errors\InvalidRange
+         */
+        public function testuniqueIntegerArrayInvalidrange()
+        {
+            $casus = $this->casus;
+            $val = $casus->uniqueIntegerArray(40, 80, 100);
+        }
+
         public function testFloatArray()
         {
             $casus = $this->casus;
