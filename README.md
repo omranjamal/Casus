@@ -53,6 +53,7 @@ echo $random_generator->integer();
 - [asciiRange](#asciirange-length-ranges--secure) - Generates a random string from a range in the ascii table
 - [string](#string-length-charset--secure) - Generates a random string from a character set
 - [integerArray](#integerarray-min-max-length--secure) - Generates an array of random Integers
+- [uniqueIntegerArray](#uniqueintegerarray-min-max-length--secure) - Generates an array of unique random Integers
 - [floatArray](#floatarray-min-max-precision-length--secure) - Generates an array of random floating point integers
 - [randomize](#randomize-input--secure) - Takes an array or string and randomizes its order
 - [selectRandom](#selectrandom-input-length--secure) - Selects elements from an array at random
@@ -165,7 +166,20 @@ Returns an array of random integers
     > Upper Bound of numbers returned
 
 - _int_ `$length` (`10`)
-    > Length of generated Integer Array
+    > Length of generated Array
+
+### uniqueIntegerArray (_$min_, _$max_, _$length_ [, _$secure_])
+Returns an array of unique random integers
+
+**Parameters**  
+- _int_ `$min` (`0`)
+    > Lower Bound of numbers returned
+    
+- _int_ `$max` (`PHP_INT_MAX`)
+    > Upper Bound of numbers returned
+
+- _int_ `$length` (`10`)
+    > Length of generated Array
 
 
 ### floatArray (_$min_, _$max_, _$precision_, _$length_ [, _$secure_])
