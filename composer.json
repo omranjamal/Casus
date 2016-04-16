@@ -2,8 +2,11 @@
     "name": "hedronium/casus",
     "description": "A Library to Generate anything Random.",
     "require": {
-         "php": ">=5.4.0",
-         "ext-mcrypt": "*"
+         "php": ">=5.4.0"
+    },
+    "suggest": {
+        "ext-mcrypt": "Has a Cryptographically Strong Pseudo Random Number Generator.",
+        "ext-openssl": "Has a Cryptographically Strong Pseudo Random Number Generator."
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4"
