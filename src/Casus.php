@@ -1,7 +1,7 @@
 <?php
 namespace hedronium\Casus;
 
-class Casus 
+class Casus
 {
     protected $generator;
 
@@ -37,14 +37,14 @@ class Casus
             }
         } elseif ($generator !== null) {
             $this->generator = $generator;
-
-            if ($secure === true) {
-                if ($generator->isSecure() === false) {
-                    throw new errors\Insecure('The provided generator is not a CSPRNG');
-                }
-            }
         } else {
-            $this->generator = new Basic;
+            $this->generator = new Basic();
+        }
+
+        if ($secure === true) {
+            if ($generator->isSecure() === false) {
+                throw new errors\Insecure('The provided generator is not a CSPRNG');
+            }
         }
 
         return true;
