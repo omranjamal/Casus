@@ -21,7 +21,7 @@ abstract class Generator
         }
     }
 
-    public function float($min = 0, $max = 1, $precision = 4, $secure = true)
+    public function float($min = 0, $max = 1, $precision = 16, $secure = true)
     {
         $precision = abs($precision);
         $e = pow(10, $precision);
